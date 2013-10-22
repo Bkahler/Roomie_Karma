@@ -1,0 +1,46 @@
+<h1> <%= @current_household.username %> </h1>
+
+<h4> Roomies: </h4>
+<%@current_household.members.each do |x| %>
+       <%= x.name %><br>
+       <%end %>
+  <h4> Chores: </h4>
+  <% @current_household.chores.each do |x| %>
+    <%= x.name %><br>
+  <%end %>
+
+<div>
+  <h4>Assignments week 1</h4>
+
+
+   </div>
+
+<div id="form">
+<h4> Add Roomies</h4>
+<form action="/members/" method ="post" >
+        <input id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
+        <input id="input" type = "email" name ="email" placeholder = "Email"/>
+        <button type="submit"> add roomate </button>
+  </form>
+</div>
+
+<div id="form">
+<h4> Create Chores</h4>
+  <form action="/chores/" method ="post" >
+        <input id="input" type = "text" name ="name" placeholder= "Chores"/>
+        <button type="submit"> add Chore</button>
+  </form>
+</div>
+
+<div id="form">
+<h4> Assign Chores</h4>
+<form action="/member_chores/" method ="post" >
+        <input id="input" type = "text" name ="assigned_member" placeholder= "Household Member"/>
+        <input id="input" type = "text" name ="assigned_chore" placeholder= "Chore"/>
+          Week: <input type="number" name="week" min="1" max="4">
+        <button type="submit"> add Chore</button>
+  </form>
+</div>
+
+
+

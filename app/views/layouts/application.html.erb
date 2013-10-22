@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RoomieKarma</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if current_household %>
+    <%= link_to "Logout", logout_path %>
+<% end %>
+<br><%= flash[:errors] if flash[:errors] %><br>
+<%= yield %>
+
+</body>
+</html>
