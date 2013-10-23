@@ -25,7 +25,8 @@
             </form>
       </div>
       <% @current_household.chores.each do |x| %>
-        <%= x.name %><br>
+      <%=link_to x.name ,chore_path(x.id)%><br>
+
       <%end %>
   </div>
 
@@ -39,6 +40,9 @@
           Week: <input type="number" name="week" min="1" max="4">
           <button type="submit"> add Chore</button>
           </form>
+
+            <%=link_to "reset assignments",reset_path%>
+
         </div>
       </div>
       <% @current_household.members.each do |x| %>
@@ -54,6 +58,7 @@
                   <% if member_chore.week =="1"%>
                 <tr>
                  <td>Week:<%= @week =member_chore.week %> </td>
+                 <% if member_chore.chore %>
                  <td><%= @chore_name =member_chore.chore.name %></td>
                  <td><% if member_chore.complete  ==false %>
                          <%=link_to "Almost!",complete_path(member_chore)%>
@@ -61,6 +66,7 @@
                           <%=link_to "All Done!",incomplete_path(member_chore)%>
                           <%end%>
                  </td>
+                 <%end%>
                </tr>
 
 

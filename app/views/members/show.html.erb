@@ -2,7 +2,7 @@
   <% if x.id ==params[:id].to_i%>
   <%= x.name%>
   <%= x.email%>
-  <%=link_to "delete", member_path(x.id), :method=> :delete, :confirm => "sure?" %>
+  <%=link_to "delete", member_path(x.id), :method=> :delete, :confirm => "sure ?" %>
   <%=link_to "edit",edit_member_path(x.id), :method=> :get%>
   <%end%>
 <%end%>

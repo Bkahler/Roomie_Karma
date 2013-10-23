@@ -27,6 +27,7 @@ class MembersController < ApplicationController
 
  def destroy
       Member.delete(params[:id])
+      redirect_to household_path(@current_household.id)
   end
 
 end

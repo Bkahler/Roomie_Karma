@@ -2,7 +2,10 @@ RoomieKarma::Application.routes.draw do
   root to: "households#index"
 
   resources :members
-  resources :members_chores
+    get "/member_chores/reset" =>"member_chores#reset", as: "reset"
+
+  resources :member_chores
+  resources :chores
 
   get "/households", to: "households#index"
   get "/households/new", to: "households#new", as: "new_household"
@@ -10,7 +13,7 @@ RoomieKarma::Application.routes.draw do
   post "/households", to: "households#create"
 
 
-  post "/chores", to: "chores#create"
+  # post "/chores", to: "chores#create"
 
   # get "/member_chores", to: "member_chores#show"
   # post "/member_chores", to: "member_chores#create"

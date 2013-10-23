@@ -33,6 +33,15 @@ class MemberChoresController < ApplicationController
        redirect_to household_path(@current_household.id)
     end
 
+    def reset
+      # binding.pry
+      @current_household.members.each do |x|
+        x.member_chores.delete_all
+       end
+       redirect_to household_path(@current_household.id)
+
+    end
+
 
 
 end
