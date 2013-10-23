@@ -18,10 +18,7 @@
         <%end %>
       </div>
 
-
-
-
-
+<button type="button" class ="btn btn-info btn-sm"data-toggle ="collapse" data-target="chores">Supplies</button>
 <div id="Supply Chart">
     <div id="form">
         <h5> Add Household Supplies</h5>
@@ -29,12 +26,13 @@
             <input id="input" type = "text" name ="name" placeholder= "Supply Name"/>
             <button type="submit"> add supply</button>
         </form>
-      </div>
 
-
-
-
-
+      <% @current_household.supplies.each do |x| %>
+                 <%@name = x.name %>
+                 <% @supply = Supply.find_by_name(@name) %>
+                 <%=link_to  @supply.name, supply_path(x.id) %>
+      <%end%>
+  </div>
 
     <!-- <br><button onclick="Hide_chores();"> Chores </button>
     <div id ="chores" class="hide"> -->
@@ -53,7 +51,7 @@
           <%end %>
       </div>
 
-    <button type="button" class ="btn btn-info btn-sm" data-toggle ="collapse" data-target="assignments">Chores</button>
+    <button type="button" class ="btn btn-info btn-sm" data-toggle ="collapse" data-target="assignments">Assignments</button>
     <div id="assignments" class="collapse in">
            <div id="form">
             <h5> Assign Chores</h5>

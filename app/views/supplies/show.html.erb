@@ -1,0 +1,7 @@
+<%@current_household.supplies.each do |x|%>
+  <% if x.id ==params[:id].to_i%>
+  <%= x.name%>
+  <%=link_to "delete", supply_path(x.id), :method=> :delete, :confirm => "sure ?" %>
+  "Edit and Add details coming soon"
+  <%end%>
+<%end%>
