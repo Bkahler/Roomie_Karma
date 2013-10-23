@@ -4,15 +4,24 @@
   <title>RoomieKarma</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-collapse.js" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <header>
+    <div class ="navbar navbar-default">
+      <div class ="text-left ">
+        <h4> Roomie Karma </h4>
+      </div>
+    </div>
+  </header>
+<body id ="main">
+  <div id= class="container">
 
 <% if current_household %>
     <%= link_to "Logout", logout_path %>
 <% end %>
 <br><%= flash[:errors] if flash[:errors] %><br>
 <%= yield %>
-
+</div>
 </body>
 </html>

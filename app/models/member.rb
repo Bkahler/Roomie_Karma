@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :name, :email, :household_id
+  attr_accessible :name, :email, :household_id, :score
 
   belongs_to :household
   has_many :member_chores, dependent: :destroy

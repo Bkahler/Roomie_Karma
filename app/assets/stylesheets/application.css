@@ -10,12 +10,19 @@
  *
  *= require_self
  *= require_tree .
+ *= require twitter/bootstrap
  */
+#main{
+  background: #1abc9c;
+  font-family: helvetica;
+}
 
+#icon{
+          height: 100px;
+        }
  #form{
-  border:1px solid green;
   margin-top: 15px;
-  width: 400px;
+  width: 600px;
  }
 
   .hide{

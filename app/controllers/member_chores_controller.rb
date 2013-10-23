@@ -23,14 +23,22 @@ class MemberChoresController < ApplicationController
 
     def complete
       @member_chores= MemberChore.find_by_id(params[:id])
+      member_id = @member_chores.member.id
       @member_chores.update_attributes(complete: true)
-       redirect_to household_path(@current_household.id)
+      member_score = Member.find_by_id(member_id)
+      member_score.score +=1
+      member_score.save
+      redirect_to household_path(@current_household.id)
     end
 
     def incomplete
       @member_chores= MemberChore.find_by_id(params[:id])
+      member_id = @member_chores.member.id
       @member_chores.update_attributes(complete: false)
-       redirect_to household_path(@current_household.id)
+      member_score = Member.find_by_id(member_id)
+      member_score.score -=1
+      member_score.save
+      redirect_to household_path(@current_household.id)
     end
 
     def reset
@@ -41,7 +49,5 @@ class MemberChoresController < ApplicationController
        redirect_to household_path(@current_household.id)
 
     end
-
-
 
 end
