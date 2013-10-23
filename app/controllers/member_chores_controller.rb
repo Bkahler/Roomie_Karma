@@ -21,4 +21,18 @@ class MemberChoresController < ApplicationController
 
     end
 
+    def complete
+      @member_chores= MemberChore.find_by_id(params[:id])
+      @member_chores.update_attributes(complete: true)
+       redirect_to household_path(@current_household.id)
+    end
+
+    def incomplete
+      @member_chores= MemberChore.find_by_id(params[:id])
+      @member_chores.update_attributes(complete: false)
+       redirect_to household_path(@current_household.id)
+    end
+
+
+
 end

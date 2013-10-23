@@ -17,3 +17,14 @@
   margin-top: 15px;
   width: 400px;
  }
+
+  .hide{
+  display:none;
+  height: 800px;
+
+ }
+  .unhide{
+ display: inline;
+ height: 800px;
+
+}

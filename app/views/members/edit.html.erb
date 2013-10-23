@@ -1,0 +1,11 @@
+
+<%= form_for @member, action: :edit do |f|  %>
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name, :placeholder => "Enter a name"%>
+    <br>
+    <%= f.label :email %>
+    <br>
+    <%= f.email_field :email,:placeholder=> "Enter and email"%>
+    <%= f.submit   "Save", id:"my_button"%>
+<% end %>

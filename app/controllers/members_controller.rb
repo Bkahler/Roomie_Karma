@@ -1,5 +1,9 @@
 class MembersController < ApplicationController
 
+  def show
+
+  end
+
   def create
     if params[:name] && params[:email]
     @member= Member.create(name: params[:name], email:params[:email], household_id:@current_household.id)
@@ -10,9 +14,19 @@ class MembersController < ApplicationController
    end
   end
 
+  def edit
+      @member = Member.find(params[:id])
 
-def member_chores
-  @current_household.members.each do |x|
-     x.name
+  end
+
+  def update
+    updated_member = Member.find(params[:id])
+    updated_member.update_attributes(params[:member])
+    redirect_to household_path(@current_household.id)
+  end
+
+ def destroy
+      Member.delete(params[:id])
+  end
 
 end

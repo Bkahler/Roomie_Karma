@@ -1,46 +1,79 @@
 <h1> <%= @current_household.username %> </h1>
 
-<h4> Roomies: </h4>
-<%@current_household.members.each do |x| %>
-       <%= x.name %><br>
-       <%end %>
-  <h4> Chores: </h4>
-  <% @current_household.chores.each do |x| %>
-    <%= x.name %><br>
-  <%end %>
+<button onclick="Hide_roomies();">Roomies:</button>
+<div id="roomies_list" class="hide" >
+    <div id="form">
+        <h5> Add Roomies</h5>
+        <form action="/members/" method ="post" >
+                <input id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
+                <input id="input" type = "email" name ="email" placeholder = "Email"/>
+                <button type="submit"> add roomate </button>
+          </form>
+         </div>
+    <%@current_household.members.each do |x| %>
+    <%=link_to x.name ,member_path(x.id)%><br>
+    <%end %>
+  </div>
 
-<div>
-  <h4>Assignments week 1</h4>
+<br><button onclick="Hide_chores();"> Chores </button>
+<div id ="chores" class="hide">
+      <div id="form">
+      <h5> Create Chores</h5>
+            <form action="/chores/" method ="post" >
+                  <input id="input" type = "text" name ="name" placeholder= "Chores"/>
+                  <button type="submit"> add Chore</button>
+            </form>
+      </div>
+      <% @current_household.chores.each do |x| %>
+        <%= x.name %><br>
+      <%end %>
+  </div>
 
-
-   </div>
-
-<div id="form">
-<h4> Add Roomies</h4>
-<form action="/members/" method ="post" >
-        <input id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
-        <input id="input" type = "email" name ="email" placeholder = "Email"/>
-        <button type="submit"> add roomate </button>
-  </form>
-</div>
-
-<div id="form">
-<h4> Create Chores</h4>
-  <form action="/chores/" method ="post" >
-        <input id="input" type = "text" name ="name" placeholder= "Chores"/>
-        <button type="submit"> add Chore</button>
-  </form>
-</div>
-
-<div id="form">
-<h4> Assign Chores</h4>
-<form action="/member_chores/" method ="post" >
-        <input id="input" type = "text" name ="assigned_member" placeholder= "Household Member"/>
-        <input id="input" type = "text" name ="assigned_chore" placeholder= "Chore"/>
+<br><button onclick="Hide_assignments();"> Assignments </button>
+<div id= "assignments" class="hide">
+       <div id="form">
+        <h5> Assign Chores</h5>
+          <form action="/member_chores/" method ="post" >
+          <input id="input" type = "text" name ="assigned_member" placeholder= "Household Member"/>
+          <input id="input" type = "text" name ="assigned_chore" placeholder= "Chore"/>
           Week: <input type="number" name="week" min="1" max="4">
-        <button type="submit"> add Chore</button>
-  </form>
-</div>
+          <button type="submit"> add Chore</button>
+          </form>
+        </div>
+      </div>
+      <% @current_household.members.each do |x| %>
+         <%@name = x.name %>
+         <% @member = Member.find_by_name(@name) %>
+                <table border =".5">
+                     <tr>
+                        <th> <%=@member.name%></th>
+                        <th> Chore:</th>
+                        <th> Complete </th>
+                    </tr>
+              <% @member.member_chores.each do |member_chore| %>
+                  <% if member_chore.week =="1"%>
+                <tr>
+                 <td>Week:<%= @week =member_chore.week %> </td>
+                 <td><%= @chore_name =member_chore.chore.name %></td>
+                 <td><% if member_chore.complete  ==false %>
+                         <%=link_to "Almost!",complete_path(member_chore)%>
+                          <% else%>
+                          <%=link_to "All Done!",incomplete_path(member_chore)%>
+                          <%end%>
+                 </td>
+               </tr>
+
+
+              <br/>
+                <%end%>
+              <%end%>
+      <%end%>
+
+
+
+
+
+
 
 
 
