@@ -109,8 +109,8 @@
                                     <button type="button"><%=link_to "all full", instock_path(@supply.id)%></button><br>
                                     <%=@supply.stocked%>
                            </th>
-                           <% if @supply.members != nil %>
-                           <th> <%=@supply.members[0].name%></th>
+                           <% if @supply.members[0] != nil %>
+                           <th> <%=@member.name%></th>
                            <%end%>
                         </tr>
               <%end%>

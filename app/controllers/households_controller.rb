@@ -4,18 +4,19 @@ class HouseholdsController < ApplicationController
     def index
     end
 
-
     def new
       @household = Household.new
     end
 
     def create
       @household= Household.create(params[:household])
+
           if @household.errors.empty?
+            UserMailer.welcome_email(@household).deliver
             sign_in(@household)
           redirect_to household_path(@household)
-         else
-          flash[:errors] = "Please enter a name for your household !"
+          else
+         flash[:errors] = "Please enter a name for your household !"
           render :new
         end
     end
@@ -32,8 +33,5 @@ class HouseholdsController < ApplicationController
 
     def destroy
     end
-
-
-
 
 end
