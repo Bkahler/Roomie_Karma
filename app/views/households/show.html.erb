@@ -30,25 +30,7 @@
             <button type="submit"> add supply</button>
         </form>
       </div>
-      <div id="Supply Table">
-              <% @current_household.supplies.each do |x| %>
-                 <%@name = x.name %>
-                 <% @supply = Supply.find_by_name(@name) %>
-                        <table class="table">
-                        <tr>
-                            <th><%=@supply.name%>
-                                    <button type="button"><%=link_to "all out", outstock_path(@supply.id)%></button>
-                                    <button type="button"><%=link_to "all full", instock_path(@supply.id)%></button><br>
-                                    <%=@supply.stocked%>
-                           </th>
-                           <th> Test</th>
-                           <th> Test</th>
-                           <th> Test</th>
-                           <th> Test</th>
-                        </tr>
-              <%end%>
-        </div>
- </div>
+
 
 
 
@@ -115,6 +97,27 @@
                     <%end%>
                   <%end%>
           <%end%>
+
+
+
+          <div id="Supply Table">
+              <% @current_household.supplies.each do |x| %>
+                 <%@name = x.name %>
+                 <% @supply = Supply.find_by_name(@name) %>
+                        <table class="table">
+                        <tr>
+                            <th><%=@supply.name%>
+                                    <button type="button"><%=link_to "all out", outstock_path(@supply.id)%></button>
+                                    <button type="button"><%=link_to "all full", instock_path(@supply.id)%></button><br>
+                                    <%=@supply.stocked%>
+                           </th>
+                           <% if @supply.members != nil %>
+                           <th> <%=@supply.members[0].name%></th>
+                           <%end%>
+                        </tr>
+              <%end%>
+        </div>
+ </div>
     </div>
 </body>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023162603) do
+ActiveRecord::Schema.define(:version => 20131023202318) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
@@ -48,12 +48,20 @@ ActiveRecord::Schema.define(:version => 20131023162603) do
     t.integer  "score",        :default => 0
   end
 
+  create_table "members_supplies", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "supply_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "supplies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.boolean  "stocked",      :default => true
     t.integer  "household_id"
+    t.integer  "member_id"
   end
 
 end

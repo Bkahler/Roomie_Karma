@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   attr_accessible :name, :email, :household_id, :score
 
   belongs_to :household
+  has_and_belongs_to_many :supplies
   has_many :member_chores, dependent: :destroy
   has_many :chores, through: :member_chores
 
