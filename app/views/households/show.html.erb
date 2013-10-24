@@ -1,122 +1,171 @@
 <body>
   <div id="main_page" class="container">
-    <h1> <%= @current_household.username %> </h1>
-
-  <!--   <button onclick="Hide_roomies();">Roomies</button> -->
-  <button type="button" class ="btn btn-info btn-sm" data-toggle ="collapse" data-target="#roomies_list">Roomies</button>
-    <div id="roomies_list" class="collapse in">
-        <div id="form">
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Roomies
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div id="roomies_list" >
+          <div id="form">
             <h5> Add Roomies</h5>
             <form action="/members/" method ="post" >
                     <input id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
                     <input id="input" type = "email" name ="email" placeholder = "Email"/>
                     <button type="submit"> add roomate </button>
               </form>
-             </div>
+          </div>
         <%@current_household.members.each do |x| %>
         <%=link_to x.name ,member_path(x.id)%><br>
         <%end %>
       </div>
-
-<button type="button" class ="btn btn-info btn-sm"data-toggle ="collapse" data-target="chores">Supplies</button>
-<div id="Supply Chart">
-    <div id="form">
-        <h5> Add Household Supplies</h5>
-        <form action="/supplies/" method ="post" >
-            <input id="input" type = "text" name ="name" placeholder= "Supply Name"/>
-            <button type="submit"> add supply</button>
-        </form>
-
-      <% @current_household.supplies.each do |x| %>
-                 <%@name = x.name %>
-                 <% @supply = Supply.find_by_name(@name) %>
-                 <%=link_to  @supply.name, supply_path(x.id) %>
-      <%end%>
+      </div>
+    </div>
   </div>
-
-    <!-- <br><button onclick="Hide_chores();"> Chores </button>
-    <div id ="chores" class="hide"> -->
-      <button type="button" class ="btn btn-info btn-sm"data-toggle ="collapse" data-target="chores">Chores</button>
-    <div id="chores" class="collapse in">
-          <div id="form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Supplies
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+       <div id="supplies" >
+      <div id="form">
+          <h5> Add Household Supplies</h5>
+          <form action="/supplies/" method ="post" >
+              <input id="input" type = "text" name ="name" placeholder= "Supply Name"/>
+              <button type="submit"> add supply</button>
+          </form>
+      </div>
+        <% @current_household.supplies.each do |x| %>
+                   <%@name = x.name %>
+                   <% @supply = Supply.find_by_name(@name) %>
+                   <%=link_to  @supply.name, supply_path(x.id) %>
+        <%end%>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Chores
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+       <div id="chores">
+        <div id="form">
           <h5> Create Chores</h5>
-                <form action="/chores/" method ="post" >
-                      <input id="input" type = "text" name ="name" placeholder= "Chores"/>
-                      <button type="submit"> add Chore</button>
-                </form>
-          </div>
+          <form action="/chores/" method ="post" >
+              <input id="input" type = "text" name ="name" placeholder= "Chores"/>
+              <button type="submit"> add Chore</button>
+          </form>
+      </div>
           <% @current_household.chores.each do |x| %>
           <%=link_to x.name ,chore_path(x.id)%><br>
-
           <%end %>
       </div>
+      </div>
+    </div>
+  </div>
 
-    <button type="button" class ="btn btn-info btn-sm" data-toggle ="collapse" data-target="assignments">Assignments</button>
-    <div id="assignments" class="collapse in">
-           <div id="form">
-            <h5> Assign Chores</h5>
-              <form action="/member_chores/" method ="post" >
+ <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          Assignments
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+       <div id="assignments">
+        <div id="form">
+          <h5> Assign Chores</h5>
+          <form action="/member_chores/" method ="post" >
               <input id="input" type = "text" name ="assigned_member" placeholder= "Household Member"/>
               <input id="input" type = "text" name ="assigned_chore" placeholder= "Chore"/>
               Week: <input type="number" name="week" min="1" max="4">
               <button type="submit"> add Chore</button>
-              </form>
-
-                <%=link_to "reset assignments",reset_path%>
-            </div>
-          </div>
-
-          <% @current_household.members.each do |x| %>
-             <%@name = x.name %>
-             <% @member = Member.find_by_name(@name) %>
-                    <table class="table">
-                         <tr>
-                            <th> <%=@member.name%></th>
-                            <th> Chore:</th>
-                            <th> Complete </th>
-                        </tr>
-                  <% @member.member_chores.each do |member_chore| %>
-                      <% if member_chore.week %>
-                    <tr>
-                     <td>Week:<%= @week =member_chore.week %> </td>
-                     <% if member_chore.chore %>
-                     <td><%= @chore_name =member_chore.chore.name %></td>
-                     <td><% if member_chore.complete  ==false %>
-                             <%=link_to "Almost!",complete_path(member_chore)%>
-                              <% else%>
-                              <%=link_to "All Done!",incomplete_path(member_chore)%>
-                              <%end%>
-                     </td>
-                     <%end%>
-                   </tr>
-
-
-                  <br/>
-                    <%end%>
-                  <%end%>
-          <%end%>
-
-
-
-          <div id="Supply Table">
-              <% @current_household.supplies.each do |x| %>
-                 <%@name = x.name %>
-                 <% @supply = Supply.find_by_name(@name) %>
-                        <table class="table">
-                        <tr>
-                            <th><%=@supply.name%>
-                                    <button type="button"><%=link_to "all out", outstock_path(@supply.id)%></button>
-                                    <button type="button"><%=link_to "all full", instock_path(@supply.id)%></button><br>
-                                    <%=@supply.stocked%>
-                           </th>
-                           <% if @supply.members[0] != nil %>
-                           <th> <%=@member.name%></th>
-                           <%end%>
-                        </tr>
-              <%end%>
+          </form>
+              <%=link_to "reset assignments",reset_path%>
         </div>
- </div>
+       </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<div id="choreTable">
+  <% @current_household.members.each do |x| %>
+      <%@name = x.name %>
+      <% @member = Member.find_by_name(@name) %>
+
+          <table class="table">
+            <tr>
+              <th> <%=@member.name%></th>
+              <th> Chore:</th>
+              <th> Complete </th>
+            </tr>
+      <% @member.member_chores.each do |member_chore| %>
+        <% if member_chore.week %>
+            <tr>
+              <td>
+                Week:<%= @week =member_chore.week %>
+              </td>
+          <% if member_chore.chore %>
+              <td>
+                <%= @chore_name =member_chore.chore.name %>
+              </td>
+              <td>
+                <% if member_chore.complete  ==false %>
+                      <%=link_to "Almost!",complete_path(member_chore)%>
+                      <% else%>
+                      <%=link_to "All Done!",incomplete_path(member_chore)%>
+                      <%end%>
+              </td>
+                     <%end%>
+            </tr>
+            <br/>
+          <%end%>
+        <%end%>
+      <%end%>
+</div>
+
+<div id="supplyTable">
+  <% @current_household.supplies.each do |x| %>
+      <%@name = x.name %>
+      <% @supply = Supply.find_by_name(@name) %>
+
+          <table class="table">
+            <tr>
+            <th><%=@supply.name%>
+            <button type="button"><%=link_to "all out", outstock_path(@supply.id)%></button>
+            <button type="button"><%=link_to "all full", instock_path(@supply.id)%></button>
+            <br>
+      <%=@supply.stocked%>
+            </th>
+
+      <% if @supply.members[0] != nil %>
+            <%@member = @supply.members[0]%>
+            <th> <%=@member.name%></th>
+      <%end%>
+            </tr>
+  <%end%>
+</div>
+</div>
+</div>
 </body>
 
 

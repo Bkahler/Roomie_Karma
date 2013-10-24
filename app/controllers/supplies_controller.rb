@@ -23,9 +23,10 @@ class SuppliesController < ApplicationController
       @supply = Supply.find_by_id(params[:id])
       @member_supply = MembersSupply.find_by_id(@supply.id)
       @supply.update_attributes(stocked: true)
+      @new_id = Member.find_by_id(Member.offset(rand(Member.count)).first).id
 
-      # @supply.update_attributes(member_id: Member.find_by_id(Member.offset(rand(Member.count)).first).id)
-      @member_supply.update_attributes(member_id: Member.find_by_id(Member.offset(rand(Member.count)).first).id)
+      @member_supply.update_attributes(member_id: @new_id)
+       # binding.pry
       redirect_to household_path(@current_household.id)
     end
 

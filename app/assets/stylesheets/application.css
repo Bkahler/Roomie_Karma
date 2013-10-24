@@ -13,25 +13,37 @@
  *= require twitter/bootstrap
  */
 #main{
-  background: #1abc9c;
+  background: #009999;
   font-family: helvetica;
 }
+#navbar{
 
-#icon{
-          height: 100px;
+  background: #33CCCC;
+}
+
+#jumbo{
+   background: #33CCCC;
+   max-width:800px;
+   text-align: center;
+   margin-right: auto;
+   margin-left: auto;
+}
+#title{
+  font-family: 'Raleway Dots', cursive;
+  font-size: 45px;
+  color: white;
         }
+  #subtitle{
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 2px;
+    color: white;
+    margin-left: 110px;
+    margin-top: -20px;
+  }
+
  #form{
   margin-top: 15px;
   width: 600px;
  }
 
-  .hide{
-  display:none;
-  height: 800px;
 
- }
-  .unhide{
- display: inline;
- height: 800px;
-
-}
