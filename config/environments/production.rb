@@ -20,6 +20,15 @@ RoomieKarma::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+ ActionMailer::Base.smtp_settings = {
+  :user_name => 'bkahler',
+  :password => 'JoeBoxer-3',
+  :domain => 'http://roomiekarma.herokuapp.com/',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
