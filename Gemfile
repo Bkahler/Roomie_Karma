@@ -5,11 +5,17 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
 group :development do
+  gem 'pry'
+  gem 'sqlite3'
   gem "rails-erd"
 end
+
+group :production do
+  gem 'pg'
+end
+
 
 
 
@@ -43,6 +49,3 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 
-group :development do
-  gem 'pry'
-end
