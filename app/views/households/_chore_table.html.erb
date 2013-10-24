@@ -1,0 +1,57 @@
+<style>
+.choreTables{
+  width: 300px;
+  color:white;
+  font-family: 'Raleway Dots', cursive;
+  width: 500px;
+
+}
+</style>
+
+
+<% @current_household.members.each do |x| %>
+<%@name = x.name %>
+<% @member = Member.find_by_name(@name) %>
+
+<div style="width:500px ">
+  <table class="table choreTables">
+
+    <tr>
+      <th style="background-color: rgba(26, 188, 156,.5); font-size:25px;" > <%=@member.name%></th>
+      <th style="background-color: rgba(26, 188, 156,.5);font-size:18px;" >Chore</th>
+      <th style="background-color: rgba(26, 188, 156,.5);font-size:18px;" >Done Yet ? </th>
+    </tr>
+
+
+    <% @member.member_chores.each do |member_chore| %>
+      <% if member_chore.week %>
+        <tr style="background-color: rgba(255, 255, 255,.5)">
+            <td style="font-size: 18px;">
+              Week  <%= @week =member_chore.week %>
+            </td>
+      <% if member_chore.chore %>
+            <td style="font-size: 18px;">
+              <%= @chore_name =member_chore.chore.name %>
+            </td>
+
+            <td style="font-size: 18px;">
+              <% if member_chore.complete  ==false %>
+              <%=link_to "Almost!",complete_path(member_chore),{:id=>"notDone"}%>
+              <img src="http://icons.iconarchive.com/icons/visualpharm/ios7v2/256/Emoticons-Sad-icon.png"height="25px">
+              <% else%>
+
+              <%=link_to "All Done!",incomplete_path(member_chore), {:id=>"allDone"}%>
+               <img src ="http://icons.iconarchive.com/icons/visualpharm/ios7v2/256/Emoticons-Wink-icon.png" height="25px">
+
+            <!--   <img src ="http://www.clker.com/cliparts/3/c/1/9/11970969601383046655jorje_villafan_smiley_face.svg.med.png" height="20px"> -->
+              <%end%>
+            </td>
+      <%end%>
+
+    </tr>
+    <br/>
+    <%end%>
+    <%end%>
+    <%end%>
+  </table>
+</div>

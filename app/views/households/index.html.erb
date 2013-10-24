@@ -4,14 +4,34 @@
 <img src ="https://cdn3.iconfinder.com/data/icons/line/36/toilet_paper-256.png" height="40px">
 <img src ="http://www.atharmony.com.au/ikoleji/wp-content/uploads/2012/07/icon_clean.png" height ="70px">
 <img src ="http://www.nanoogo.com/img/resource/premium/food/spray-bottle-icon.png" height="70px">
-<img src="/broom.png" height="70px">
-<!-- <img src="/assests/images/buddah.png">  -->
-
-<h1>STUFF !</h1>
-
-<p><%=link_to "login", new_session_path %> </p>
-<p><%= link_to "create new household", new_household_path %> </p>
+<div id ="intro">
+<p> Create a chore chart, keep track of who the cleanest roomie is...</p>
+<p> Create a supply list and get automatic email reminders when it's your turn to buy</p>
 </div>
-<!-- </div> -->
+
+
+
+<div class="panel-group" id="accordion">
+    <div >
+      <div class="panel-heading">
+        <h4 class="panel-title splash">
+          <a class="accordion-toggle splash" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Login
+          </a>
+        </h4>
+      </div>
+     <div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+      <form action="/sessions " method="post" id="login">
+        <input type="text" name="username" placeholder="Household Name">
+        <input type="password" name="password" placeholder="password">
+        <input id = "button" type="submit" style="border: 0px; color:white; border-radius:9px;">
+      </form>
+  </div>
+</div>
+
+
+
+      <p><%= link_to "create new household", new_household_path %> </p>
 
 

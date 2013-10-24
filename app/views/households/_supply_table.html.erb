@@ -1,0 +1,37 @@
+<style >
+.supplyTables{
+  width: 370px;
+  color:white;
+  font-family: 'Raleway Dots', cursive;
+}
+</style>
+
+<div >
+  <% @current_household.supplies.each do |x| %>
+    <% @name = x.name %>
+    <% @supply = Supply.find_by_name(@name) %>
+    <table  class= "supplyTables table">
+      <th style="background-color: rgba(26, 188, 156,.5); font-size:25px" colspan="3"><%=@supply.name%></th>
+      <tr>
+        <td style="background-color: rgba(255, 255, 255,.5)">
+          <button class="outButton" type="button"><%=link_to "all out", outstock_path(@supply.id)%></button>
+          <button class="inButton" type="button"><%=link_to "all full", instock_path(@supply.id)%></button>
+        </td>
+        <td style="background-color: rgba(255, 255, 255,.5); font-size:20px">
+          <% if @supply.members[0] != nil %>
+            <%@member = @supply.members[0]%>
+            <%=@member.name%>
+          <%end%>
+        </td>
+
+        <td style="background-color: rgba(255, 255, 255,.5)">
+          <%if @supply.stocked==true%>
+          <img src = "http://www.clker.com/cliparts/p/e/X/9/d/4/check-mark-white-md.png" height="20px">
+          <%else%>
+          <img src ="http://www.clker.com/cliparts/R/x/l/9/v/h/x-mark-red-hi.png" height="20px">
+          <%end%>
+        </td>
+      </tr>
+    </table>
+  <%end%>
+</div>
