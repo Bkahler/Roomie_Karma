@@ -10,12 +10,11 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse">
         <div class="panel-body">
-
           <div id="roomies_list" >
             <div id="form">
               <h5> Add Roomies</h5>
               <form action="/members/" method ="post" >
-                <input style="background:red"id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
+                <input id="input" type = "text" name ="name" placeholder= "Roomate Name"/>
                 <input id="input" type = "email" name ="email" placeholder = "Email"/>
                 <button id="submit1"type="submit"> add roomate </button>
               </form>
@@ -42,13 +41,14 @@
             <h5> Add Household Supplies</h5>
             <form action="/supplies/" method ="post" >
               <input id="input" type = "text" name ="name" placeholder= "Supply Name"/>
+              <input id="input" type = "text box" name ="details" placeholder= "Supply Details "/>
               <button type="submit"> add supply</button>
             </form>
           </div>
           <% @current_household.supplies.each do |x| %>
           <%@name = x.name %>
           <% @supply = Supply.find_by_name(@name) %>
-          <%=link_to  @supply.name, supply_path(x.id) %>
+          <%=link_to  @supply.name, supply_path(x.id) %><br>
           <%end%>
         </div>
       </div>
@@ -97,11 +97,6 @@
   <p class="chart_title"> SUPPLIES</p>
   <%= render "supply_table"%>
 </div>
-
-
-
-
-
 
 <div id= "chore_div" style="float: right;">
   <p class="chart_title">CHORES</p>

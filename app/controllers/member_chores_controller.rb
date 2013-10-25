@@ -8,7 +8,7 @@ class MemberChoresController < ApplicationController
           end
 
         member = Member.find_by_id(@id)
-        chore = Chore.find_by_name(params[:assigned_chore])
+        chore = Chore.find_by_name(params[:assigned_chore].downcase)
         week = params[:week]
 
           if member && chore
@@ -42,12 +42,10 @@ class MemberChoresController < ApplicationController
     end
 
     def reset
-      # binding.pry
       @current_household.members.each do |x|
         x.member_chores.delete_all
        end
        redirect_to household_path(@current_household.id)
-
     end
 
 end

@@ -70,6 +70,13 @@
   line-height: -10px;
   margin-right:10px;
 }
+#miniNav{
+  font-family: 'Raleway Dots', cursive;
+  color:white;
+  padding: 5px;
+  line-height: -10px;
+  margin-right:10px;
+}
 #allDone{
   font-size: 16px;
   color: white;
@@ -108,6 +115,27 @@
   color: white;
   font-family: 'Amatic SC', cursive;
   font-weight: bold;
-  font-size: 30px
+  font-size: 25px
 
+}
+.scorePage{
+font-family: 'Amatic SC', cursive;
+font-size: 25px;
+ text-decoration: underline;
+
+}
+
+#scorePage{
+color: white;
+font-family: 'Raleway Dots', cursive;
+font-size: 20px;
+}
+#signUp{
+
+  color: white;
+  text-align: right;
+  font-family: 'Raleway Dots', cursive;
+  border: 1px solid white;
+  width:600px;
+  padding: 10px;
 }

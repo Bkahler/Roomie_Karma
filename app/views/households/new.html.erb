@@ -1,13 +1,15 @@
+<div class="container" id="signUp">
 <h1> Sign Up</h1>
 
     <%= form_for @household do |f| %>
-        <%=f.label :household_name   %>
-        <%=f.text_field :username %>
-        <%=f.label :email  %>
-        <%=f.text_field :email %>
-        <%=f.label :password  %>
-        <%=f.password_field :password %>
-        <%=f.label :password_confirmation %>
-        <%=f.password_field :password_confirmation %>
+        <%=f.label :household_name%>:
+        <%=f.text_field :username, :placeholder=>"username" %><br>
+        <%=f.label :email  %>:
+        <%=f.text_field :email, :placeholder=>"email" %><br>
+        <%=f.label :password  %>:
+        <%=f.password_field :password %><br>
+        <%=f.label :password_confirmation %>:
+        <%=f.password_field :password_confirmation %><br>
         <%= f.submit %>
      <% end %>
+ </div>

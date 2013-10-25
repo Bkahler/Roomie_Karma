@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023202318) do
+ActiveRecord::Schema.define(:version => 20131025041602) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20131023202318) do
     t.boolean  "stocked",      :default => true
     t.integer  "household_id"
     t.integer  "member_id"
+    t.text     "details"
   end
 
 end
