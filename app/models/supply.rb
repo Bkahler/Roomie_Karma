@@ -5,5 +5,9 @@ class Supply < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def supply_instock
+
+  end
+
 
 end
