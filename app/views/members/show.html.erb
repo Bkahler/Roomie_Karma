@@ -1,11 +1,11 @@
 <%@current_household.members.each do |x|%>
   <% if x.id ==params[:id].to_i%>
     <div class="container">
-        <%=link_to "back",household_path(@current_household.id),{:id=>"miniNav"}, :method=> :get%>
-        <%=link_to "delete", member_path(x.id),{:id=>"miniNav"}, :method=> :delete, :confirm => "sure ?" %>
-        <%=link_to "edit",edit_member_path(x.id),{:id=>"miniNav"}, :method=> :get%>
+        <%=link_to "back",household_path(@current_household.id),{:class=>"miniNav"}, :method=> :get%>
+        <%=link_to "edit",edit_member_path(x.id),{:class=>"miniNav"}, :method=> :get%>
+        <%=link_to "delete", member_path(x.id),{:method=> :delete, :confirm => "sure ?" ,:class=>"miniNav"}  %>
       </div>
-    <div id="scorePage" class="container">
+    <div id="scorePage" class="container ">
         <h4 class="scorePage"> Roomie Name</h4>
         <%= x.name%><br>
         <h4 class="scorePage">Email</h4>

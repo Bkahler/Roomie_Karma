@@ -1,12 +1,12 @@
 <%@current_household.supplies.each do |x|%>
   <% if x.id ==params[:id].to_i%>
     <div class="container">
-       <%=link_to "back",household_path(@current_household.id),{:id=>"miniNav"}, :method=> :get%>
-        <%=link_to "delete", supply_path(x.id),{:id=>"miniNav"}, :method=> :delete, :confirm => "sure ?" %>
+        <%=link_to "back",household_path(@current_household.id), {:method=> :get, :class=> "miniNav"}%>
+        <%=link_to  "delete", supply_path(x.id),{:method=> :delete, :confirm => "sure ?",:class=>"miniNav"}  %>
     </div>
-    <div  id="scorePage" class="container">
+    <div  id="scorePage" class="container ">
       <%= x.name%><br>
-    <h6><%= x.details%></h6>
+    <h5><%= x.details%></h5>
   <%end%>
 <%end%>
  </div>

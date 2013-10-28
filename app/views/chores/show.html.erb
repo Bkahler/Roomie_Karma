@@ -1,7 +1,12 @@
 <%@current_household.chores.each do |x|%>
   <% if x.id == params[:id].to_i %>
-    <%= x.name %>
-    <%=link_to "delete", chore_path(x.id), :method=> :delete, :confirm=> "sure ?" %>
-    <%=link_to "edit", edit_chore_path(x.id), :method=> :get%>
+  <div class="container">
+    <%=link_to "back",household_path(@current_household.id), {:method=> :get, :class=> "miniNav"}%>
+    <%=link_to "delete", chore_path(x.id),{:class=>"miniNav"}, :method=> :delete, :confirm=> "sure ?" %>
+    <%=link_to "edit", edit_chore_path(x.id),{:class=>"miniNav"}, :method=> :get%>
+  </div>
+  <div id= "scorePage" class="container">
+     <%= x.name %><br>
   <%end%>
 <%end%>
+</div>
