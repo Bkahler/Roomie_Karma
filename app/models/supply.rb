@@ -5,9 +5,20 @@ class Supply < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def supply_instock
-
+  def self.supply_instock(params)
+      supply = Supply.find_by_id(params[:id])
+      member_supply = MembersSupply.find_by_id(supply.id)
+      supply.update_attributes(stocked: true)
+      new_id = Member.find_by_id(Member.offset(rand(Member.count)).first).id
+      member_supply.update_attributes(member_id: new_id)
   end
+
+  def self.supply_outstock(params)
+      @supply = Supply.find_by_id(params[:id])
+      @supply.update_attributes(stocked: false)
+      @member = @supply.members[0]
+      UserMailer.supply_buy(@member,@supply).deliver
+    end
 
 
 end
