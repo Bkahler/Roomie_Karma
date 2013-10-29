@@ -10,6 +10,7 @@ group :development do
   gem 'pry'
   gem 'sqlite3'
   gem "rails-erd"
+  gem  'rspec-rails'
 end
 
 group :production do
