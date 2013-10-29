@@ -13,7 +13,7 @@ class HouseholdsController < ApplicationController
 
           if @household.errors.empty?
 
-            UserMailer.welcome_email(@household).deliver
+            # UserMailer.welcome_email(@household).deliver
             sign_in(@household)
           redirect_to household_path(@household)
           else
