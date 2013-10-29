@@ -32,6 +32,8 @@ class HouseholdsController < ApplicationController
     end
 
     def destroy
+       Household.delete(params[:id])
+      redirect_to households_path
     end
 
 end
