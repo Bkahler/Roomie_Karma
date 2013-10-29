@@ -25,7 +25,7 @@ end
       @supply = Supply.find_by_id(params[:id])
       @supply.update_attributes(stocked: false)
       @member = @supply.members[0]
-      UserMailer.supply_buy(@member,@supply).deliver
+      # UserMailer.supply_buy(@member,@supply).deliver
     end
 
 
