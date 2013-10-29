@@ -5,6 +5,14 @@ class Supply < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def create_supply(name,details,household_id)
+    @name =name
+    @details = details
+    @household_id = household_id
+    @supply = Supply.create(name:@name, details:@details,household_id:@household_id)
+    @member_supply = MembersSupply.create(supply_id:@supply.id , member_id: Member.find_by_id(Member.offset(rand(Member.count)).first).id )
+end
+
   def self.supply_instock(params)
       supply = Supply.find_by_id(params[:id])
       member_supply = MembersSupply.find_by_id(supply.id)

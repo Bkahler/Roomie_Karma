@@ -10,4 +10,6 @@ class Member < ActiveRecord::Base
   validates :email, presence: true
   validates :household_id, presence: true
 
+
+
 end
