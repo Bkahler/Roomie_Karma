@@ -4,7 +4,7 @@
         <%=link_to "back",household_path(@current_household.id),{:class=>"miniNav"}, :method=> :get%>
         <%=link_to "edit",edit_member_path(x.id),{:class=>"miniNav"}, :method=> :get%>
         <%=link_to "delete", member_path(x.id),{:method=> :delete, :confirm => "sure ?" ,:class=>"miniNav"}  %>
-      </div>
+    </div>
     <div id="scorePage" class="container ">
         <h4 class="scorePage"> Roomie Name</h4>
         <%= x.name%><br>
@@ -12,7 +12,8 @@
         <%= x.email%>
         <h4 class="scorePage">Roomie's Karma Score</h4>
         <h3><%= x.score%></h3>
+    </div>
   <%end%>
 <%end%>
-    </div>
+
 

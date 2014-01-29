@@ -11,14 +11,14 @@ class HouseholdsController < ApplicationController
     def create
       @household= Household.create(params[:household])
 
-          if @household.errors.empty?
-            UserMailer.welcome_email(@household).deliver
-            sign_in(@household)
-          redirect_to household_path(@household)
-          else
-         flash[:errors] = "Please enter a name for your household !"
-          render :new
-        end
+      if @household.errors.empty?
+        UserMailer.welcome_email(@household).deliver
+        sign_in(@household)
+        redirect_to household_path(@household)
+      else
+        flash[:errors] = "Please enter a name for your household !"
+        render :new
+      end
     end
 
     def show
@@ -32,7 +32,7 @@ class HouseholdsController < ApplicationController
     end
 
     def destroy
-       Household.delete(params[:id])
+      Household.delete(params[:id])
       redirect_to households_path
     end
 

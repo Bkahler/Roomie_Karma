@@ -11,127 +11,135 @@
  *= require_self
  *= require_tree .
  */
-#main{
+#main {
   background: #009999;
   font-family: helvetica;
 }
 
-.chart_title{
+.chart_title {
   font-family: 'Amatic SC', cursive;
   color: white;
   font-size: 45px;
 }
-#navbar{
 
+#navbar {
   background: #33CCCC;
 }
 
-#jumbo{
+#jumbo {
    background: #33CCCC;
    max-width:800px;
    text-align: center;
    margin-right: auto;
    margin-left: auto;
 }
-#title{
+
+#title {
   font-family: 'Raleway Dots', cursive;
   font-size: 45px;
   color: white;
-        }
-  #subtitle{
+}
+
+#subtitle {
     font-family: 'Amatic SC', cursive;
     letter-spacing: 2px;
     color: white;
     margin-left: 110px;
     margin-top: -20px;
-  }
+}
 
- #form{
+#form {
   margin-top: 15px;
   width: 600px;
- }
-#chore_div{
+}
+
+#chore_div {
   background: #33CCCC;
   margin-top: 20px;
   padding: 10px;
-
 }
-#supply_div{
+
+#supply_div {
   background: #33CCCC;
   margin-top: 20px;
   padding: 10px;
   width: 400px;
+}
 
-}
-#logout{
+#logout {
   font-family: 'Raleway Dots', cursive;
   color:white;
   padding: 5px;
   line-height: -10px;
   margin-right:10px;
 }
-.miniNav{
+
+.miniNav {
   font-family: 'Raleway Dots', cursive;
   color:white;
   padding: 5px;
   line-height: -10px;
   margin-right:10px;
 }
-#allDone{
+
+#allDone {
   font-size: 16px;
   color: white;
 }
-#notDone{
+
+#notDone {
   font-size: 16px;
   color: rgba(230, 126, 34,1.0);
   margin-right: 10px;
 }
 
-.outButton{
+.outButton {
   border: 0px;
   border-radius: 9px;
 }
-.inButton{
+
+.inButton {
   border: 0px;
   border-radius: 9px;
 }
-.accordianTitle{
+
+.accordianTitle {
   color: rgba(22, 160, 133,1.0);
   font-family: 'Amatic SC', cursive;
   font-weight: bold;
   font-size: 30px
-
 }
-.splash{
+
+.splash {
   color:white;
   font-size: 40px;
 }
 
-#input1{
+#input1 {
   border: 0px;
   height: 10px;
 }
-#intro{
+
+#intro {
   color: white;
   font-family: 'Amatic SC', cursive;
   font-weight: bold;
   font-size: 25px
-
 }
+
 .scorePage{
-font-family: 'Amatic SC', cursive;
-font-size: 25px;
- text-decoration: underline;
-
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  text-decoration: underline;
 }
 
-#scorePage{
+#scorePage {
 color: white;
 font-family: 'Raleway Dots', cursive;
 font-size: 20px;
 }
-#signUp{
 
+#signUp {
   color: white;
   text-align: right;
   font-family: 'Raleway Dots', cursive;

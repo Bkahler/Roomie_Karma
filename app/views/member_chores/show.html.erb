@@ -1,13 +1,11 @@
-
 <h1> Chore List </h1>
-
 <% @current_household.members.each do |x| %>
-     <br><%= @name = x.name %>:
-        <% @chore = Member.find_by_name(@name) %>
-        <% @chore.chores.each do |y| %>
-            <%= y.name %>
-            <%= y.frequency%>
-        <% end %>
-     <%end%>
+  <br><%= @name = x.name %>:
+  <% @chore = Member.find_by_name(@name) %>
+  <% @chore.chores.each do |y| %>
+      <%= y.name %>
+      <%= y.frequency%>
+  <% end %>
+<%end%>
 
 

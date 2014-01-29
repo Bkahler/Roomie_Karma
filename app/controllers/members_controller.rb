@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   end
 
   def edit
-      @member = Member.find(params[:id])
+    @member = Member.find(params[:id])
   end
 
   def update
@@ -27,5 +27,4 @@ class MembersController < ApplicationController
     Member.delete(params[:id])
     redirect_to household_path(@current_household.id)
   end
-
 end
