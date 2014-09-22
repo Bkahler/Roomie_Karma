@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    edirect_to households_path
+    redirect_to households_path
   end
 end
