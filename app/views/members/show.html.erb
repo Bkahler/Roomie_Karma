@@ -1,5 +1,5 @@
 <%@current_household.members.each do |x|%>
-  <% if x.id ==params[:id].to_i%>
+  <% if x.id == params[:id].to_i%>
     <div class="container">
         <%=link_to "back",household_path(@current_household.id),{:class=>"miniNav"}, :method=> :get%>
         <%=link_to "edit",edit_member_path(x.id),{:class=>"miniNav"}, :method=> :get%>

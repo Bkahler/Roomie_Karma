@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
 
   def authorize
-      redirect_to new_session_path unless current_household
+    redirect_to new_session_path unless current_household
   end
 
 end

@@ -7,7 +7,6 @@ RoomieKarma::Application.routes.draw do
   resources :member_chores
   resources :chores
   resources :supplies
-
   match "/member_chores/:id/complete" =>"member_chores#complete", as: "complete"
   match "/member_chores/:id/incomplete" =>"member_chores#incomplete", as: "incomplete"
   match "/supplies/:id/instock" => "supplies#instock", as:"instock"

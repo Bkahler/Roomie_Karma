@@ -5,7 +5,7 @@ class Household < ActiveRecord::Base
 
     has_many :members, dependent: :destroy
     has_many :chores, dependent: :destroy
-    has_many :supplies,dependent: :destroy
+    has_many :supplies, dependent: :destroy
 
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
